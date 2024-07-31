@@ -1,12 +1,22 @@
 import { useState } from 'react';
-import reactLogo from './assets/react.svg';
-import viteLogo from '/vite.svg';
 import './App.css';
 import ToolBar from './Toolbar';
 
+import "https://para.se/proj/mv-sorter/mv-sorter.js";
+import { Grid } from 'lucide-react';
+import React from 'react';
+
+const PDFDocument = () => {
+
+}
 function App() {
   const [count, setCount] = useState(0);
+  const [showFileMenu, setshowFileMenu] = useState(false);
+ 
+ 
 
+
+ 
   return (
     <div style={{ display: 'flex', justifyContent: 'center', width: 200 }}>
       <div style={{ flexDirection: 'column' }}>
@@ -19,11 +29,15 @@ function App() {
             background: 'black',
           }}
         >
-          <ToolBar />
+          <ToolBar showFileMenu={showFileMenu} setshowFileMenu={setshowFileMenu} />
         </div>
         <div className="app">
-          <div className="side"></div>
-          <div className="page"></div>
+          <div className="side">
+ 
+          </div>
+          <div className="page">
+              
+          </div>
         </div>
       </div>
     </div>
