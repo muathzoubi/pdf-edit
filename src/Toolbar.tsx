@@ -10,11 +10,12 @@ import {
 } from 'lucide-react';
 import Dropdown from 'react-bootstrap/Dropdown';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Button } from 'react-bootstrap';
+import { Button, CloseButton, InputGroup, Modal } from 'react-bootstrap';
+import { useState } from 'react';
 
 
 const ToolBar = (props: { showFileMenu: boolean, setshowFileMenu: any }) => {
-
+const [showmodal,setShowModal]=useState(false)
   return (
     <nav>
      <Dropdown  data-bs-theme="dark" >
@@ -61,12 +62,33 @@ const ToolBar = (props: { showFileMenu: boolean, setshowFileMenu: any }) => {
         </button>
       </div>
       <div style={{ marginLeft: 'auto' }}>
-        <button   className="mt-1">
+        <button   className="mt-1 menu">
 
-          <Settings size={16} />
+          <Settings size={16}onClick={()=>setShowModal(true)} />
+          <SettingsModal show ={showmodal} setShow={setShowModal}/>
         </button>
       </div>
     </nav>
   );
 };
 export default ToolBar;
+const SettingsModal=(props:{show:boolean,setShow:any})=>{
+  return (<Modal show={props.show}>
+
+    <Modal.Header>
+    <h3>Settings</h3>
+    <CloseButton onClick={()=>props.setShow(false)}/>
+
+    </Modal.Header>
+    <Modal.Body>
+<InputGroup>
+<input className='mx-2' type='checkbox'/>
+<label> This Is Label</label></InputGroup>
+    </Modal.Body>
+    <Modal.Footer>
+<Button onClick={()=>props.setShow(false)}>Close</Button>
+    </Modal.Footer>
+
+    
+  </Modal>)
+}
