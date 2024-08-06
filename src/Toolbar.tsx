@@ -8,27 +8,34 @@ import {
   Eye,
   Settings,
 } from 'lucide-react';
-import { Button, CloseButton, Modal, Offcanvas } from 'react-bootstrap';
 import Dropdown from 'react-bootstrap/Dropdown';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { Button } from 'react-bootstrap';
 
 
 const ToolBar = (props: { showFileMenu: boolean, setshowFileMenu: any }) => {
 
   return (
     <nav>
-      <Modal centered show={props.showFileMenu} onExit={() => props.setshowFileMenu(false)} >
-        <Modal.Body className='bg-dark row'  >
-          <CloseButton onClick={() => { props.setshowFileMenu(false) }} />
-          <Button className=' ROW my-1 px-1' variant="warning">New +</Button>
-          <Button className='col my-1 px-1' variant="primary"> Edit</Button>
-          <Button className='col my-1 px-1' variant="primary">View</Button>
-        </Modal.Body> 
-      </Modal>
+     <Dropdown  data-bs-theme="dark" >
+    <button className='menu my-1 p-0'> <Dropdown.Toggle  id="dropdown-button-dark-example1" size='sm' variant="warning" >
+       File
+        </Dropdown.Toggle></button>
+
+        <Dropdown.Menu className='border border-warning-subtle  ' >
+          <Dropdown.Item color='outline-warning'  href="#/action-1"  >
+          import 
+          </Dropdown.Item>
+          <Dropdown.Item href="#/action-2">Save</Dropdown.Item>
+          <Dropdown.Item href="#/action-3">Save As</Dropdown.Item>
+          <Dropdown.Divider />
+          <Dropdown.Item href="#/action-4">Print</Dropdown.Item>
+        </Dropdown.Menu>
+      </Dropdown>
       <div style={{ marginRight: 'auto' }}>
-        <button className='menu' onClick={() => props.setshowFileMenu(true)}>File</button>
-        <button className='menu'>Edit</button>
-        <button className='menu'>View</button>
+      
+      <button className='my-1 mt-1 menu'  >Edit</button> 
+          <button className='my-1 mt-1  menu' >View</button>
       </div>
       <div style={{ margin: 'auto' }}>
         <button>
@@ -54,7 +61,8 @@ const ToolBar = (props: { showFileMenu: boolean, setshowFileMenu: any }) => {
         </button>
       </div>
       <div style={{ marginLeft: 'auto' }}>
-        <button className='menu'>
+        <button   className="mt-1">
+
           <Settings size={16} />
         </button>
       </div>
